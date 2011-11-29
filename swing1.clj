@@ -1,6 +1,5 @@
 (ns swing1
-  (:use [clojure.contrib.swing-utils]
-        [clojure.contrib.lazy-seqs :only (fibs)])
+  (:use [clojure.contrib.swing-utils])
   (:import [javax.swing JFrame JLabel JButton SwingConstants]
            [java.awt BorderLayout]))
 ; Display the JFrame
