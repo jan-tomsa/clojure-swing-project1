@@ -17,5 +17,6 @@
 	(.add "Center" button)
 	(.add "South" my-label)
 	(.setVisible true)
+	(.setAlwaysOnTop true)
      )
 )
