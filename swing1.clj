@@ -12,7 +12,7 @@
                   (add-action-listener
                     (fn [_]
                       (.setText my-label "Hello Clojure!")
-                      (.setText panel "<h1>Hello Clojure!</h1>")
+                      (.setText panel (slurp "http://www.xkcd.com/"))
                     )))
      ]
      (doto 
