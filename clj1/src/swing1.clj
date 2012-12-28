@@ -1,5 +1,4 @@
 (ns swing1
-  ;;(:use [clojure.contrib.swing-utils])
   (:import [javax.swing JFrame JLabel JButton JEditorPane SwingConstants UIManager JOptionPane]
            [java.awt BorderLayout]
            [java.awt.event ActionListener]))
