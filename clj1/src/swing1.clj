@@ -1,7 +1,8 @@
 (ns swing1
-  (:use [clojure.contrib.swing-utils])
-  (:import [javax.swing JFrame JLabel JButton JEditorPane SwingConstants UIManager]
-           [java.awt BorderLayout]))
+  ;;(:use [clojure.contrib.swing-utils])
+  (:import [javax.swing JFrame JLabel JButton JEditorPane SwingConstants UIManager JOptionPane]
+           [java.awt BorderLayout]
+           [java.awt.event ActionListener]))
 ; Display the JFrame
 (defn setNativeLookUI []
   ;; Use the operating system native UI look and feel, do not use the Swing oriented look
@@ -9,11 +10,14 @@
 (let [my-label (JLabel. "Hello World!" SwingConstants/CENTER)
       panel (doto (JEditorPane. "text/html" "<h1>Sample text</h1><p>This is sample text</p>") )
       button (doto (JButton. "Do it!")
-                  (add-action-listener
-                    (fn [_]
-                      (.setText my-label "Hello Clojure!")
-                      (.setText panel (slurp "http://www.xkcd.com/"))
-                    )))
+                  (.addActionListener
+                    (proxy [ActionListener] []
+                      (actionPerformed [evt]
+                        (JOptionPane/showMessageDialog  nil,
+                          (str "<html>Hello from <b>Clojure</b>. Button "
+                            (.getActionCommand evt) " clicked."))
+                        (.setText panel (slurp "http://www.xkcd.com/"))
+                    ))))
      ]
      (doto 
         (JFrame. "My Swing App")
